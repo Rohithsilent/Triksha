@@ -17,7 +17,12 @@ from model import KeyPointClassifier
 from model import PointHistoryClassifier
 
 # Set page config
-st.set_page_config(page_title="Hand Gesture Recognition", layout="wide")
+st.set_page_config(
+    page_title="Triksha", 
+    page_icon="👋", 
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # App title
 st.title("Hand Gesture Recognition")
