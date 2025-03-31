@@ -1,5 +1,7 @@
 # Triksha
 Triksha is an AI-powered application designed for hand gesture recognition using MediaPipe and TensorFlow. The project enables users to interact with digital interfaces through hand movements, making it useful for applications such as accessibility tools, gaming, and virtual interactions.
+
+
 ![mqlrf-s6x16](https://user-images.githubusercontent.com/37477845/102222442-c452cd00-3f26-11eb-93ec-c387c98231be.gif)
 
 This repository contains the following contents.
