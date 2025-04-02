@@ -55,6 +55,7 @@ The following files are stored.
 ### utils/cvfpscalc.py
 This is a module for FPS measurement.
 
+
 # Training
 Hand sign recognition and finger gesture recognition can add and change training data and retrain the model.
 
