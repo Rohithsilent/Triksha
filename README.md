@@ -1,97 +1,149 @@
-# Triksha
-Triksha is an AI-powered application designed for hand gesture recognition using MediaPipe and TensorFlow. The project enables users to interact with digital interfaces through hand movements, making it useful for applications such as accessibility tools, gaming, and virtual interactions.
+🖐️ Triksha: The Jedi of Gesture Recognition
+
+Welcome to Triksha, an AI-powered wizardry for recognizing hand gestures using MediaPipe and TensorFlow. With Triksha, you can wave, point, and even do secret ninja moves to interact with digital interfaces. Whether you’re crafting an accessibility tool, gaming without a controller, or just trying to impress your cat—Triksha has got you covered!
 
 
-![mqlrf-s6x16](https://user-images.githubusercontent.com/37477845/102222442-c452cd00-3f26-11eb-93ec-c387c98231be.gif)
+---
 
-This repository contains the following contents.
-* Sample program
-* Hand sign recognition model(TFLite)
-* Finger gesture recognition model(TFLite)
-* Learning data for hand sign recognition and notebook for learning
-* Learning data for finger gesture recognition and notebook for learning
 
-# Requirements
-* mediapipe 0.8.1
-* OpenCV 3.4.2 or Later
-* Tensorflow 2.3.0 or Later<br>tf-nightly 2.5.0.dev or later (Only when creating a TFLite for an LSTM model)
-* scikit-learn 0.23.2 or Later (Only if you want to display the confusion matrix) 
-* matplotlib 3.3.2 or Later (Only if you want to display the confusion matrix)
 
-# Demo
-Here's how to run the demo using your webcam.
-```bash
+🌟 What's Inside?
+
+This repository is your ultimate gesture-powered toolkit, featuring:
+
+A sample program (because we all need a starting point).
+
+A Hand Sign Recognition Model (TFLite) for those crisp finger poses.
+
+A Finger Gesture Recognition Model (TFLite) for tracking those intricate moves.
+
+Datasets and Jupyter notebooks to train Triksha to recognize your weirdest hand signals.
+
+
+
+---
+
+🚀 Requirements
+
+Before summoning the power of Triksha, ensure your system has these enchanted packages installed:
+
+mediapipe 0.8.1 (for mystical hand-tracking)
+
+OpenCV 3.4.2 or later (so you can see what you're doing)
+
+TensorFlow 2.3.0 or later (or tf-nightly 2.5.0.dev+ if you like living on the edge)
+
+scikit-learn 0.23.2+ (for those who love confusion matrices)
+
+matplotlib 3.3.2+ (because graphs make us feel smart)
+
+
+
+---
+
+💻 Demo Time!
+
+Fire up the demo and let your hands do the talking:
+
 streamlit run app.py
-```
 
 
-### app.py
-This is a sample program for inference.<br>
-In addition, learning data (key points) for hand sign recognition,<br>
-You can also collect training data (index finger coordinate history) for finger gesture recognition.
+---
 
-### keypoint_classification.ipynb
-This is a model training script for hand sign recognition.
+🔮 The Magic Behind the Scenes
 
-### point_history_classification.ipynb
-This is a model training script for finger gesture recognition.
+app.py
 
-### model/keypoint_classifier
-This directory stores files related to hand sign recognition.<br>
-The following files are stored.
-* Training data(keypoint.csv)
-* Trained model(keypoint_classifier.tflite)
-* Label data(keypoint_classifier_label.csv)
-* Inference module(keypoint_classifier.py)
+This is where the magic happens! Run this to:
 
-### model/point_history_classifier
-This directory stores files related to finger gesture recognition.<br>
-The following files are stored.
-* Training data(point_history.csv)
-* Trained model(point_history_classifier.tflite)
-* Label data(point_history_classifier_label.csv)
-* Inference module(point_history_classifier.py)
+Infer gestures with pre-trained models.
 
-### utils/cvfpscalc.py
-This is a module for FPS measurement.
+Gather new training data for better recognition.
 
 
-# Training
-Hand sign recognition and finger gesture recognition can add and change training data and retrain the model.
+keypoint_classification.ipynb
 
-### Hand sign recognition training
-#### 1.Learning data collection
-Press "k" to enter the mode to save key points（displayed as 「MODE:Logging Key Point」）<br>
-<img src="https://user-images.githubusercontent.com/37477845/102235423-aa6cb680-3f35-11eb-8ebd-5d823e211447.jpg" width="60%"><br><br>
-If you press "0" to "9", the key points will be added to "model/keypoint_classifier/keypoint.csv" as shown below.<br>
-1st column: Pressed number (used as class ID), 2nd and subsequent columns: Key point coordinates<br>
-<img src="https://user-images.githubusercontent.com/37477845/102345725-28d26280-3fe1-11eb-9eeb-8c938e3f625b.png" width="80%"><br><br>
-The key point coordinates are the ones that have undergone the following preprocessing up to ④.<br>
-<img src="https://user-images.githubusercontent.com/37477845/102242918-ed328c80-3f3d-11eb-907c-61ba05678d54.png" width="80%">
-<br><br>
-In the initial state, three types of learning data are included: open hand (class ID: 0), close hand (class ID: 1), and pointing (class ID: 2).<br>
-If necessary, add 3 or later, or delete the existing data of csv to prepare the training data.<br>
-<img src="https://user-images.githubusercontent.com/37477845/102348846-d0519400-3fe5-11eb-8789-2e7daec65751.jpg" width="25%">　<img src="https://user-images.githubusercontent.com/37477845/102348855-d2b3ee00-3fe5-11eb-9c6d-b8924092a6d8.jpg" width="25%">　<img src="https://user-images.githubusercontent.com/37477845/102348861-d3e51b00-3fe5-11eb-8b07-adc08a48a760.jpg" width="25%">
+A Jupyter notebook that teaches Triksha how to interpret hand signs like "peace," "rock on," and "why is my code not working?!"
 
-#### 2.Model training
-Open "[keypoint_classification.ipynb](keypoint_classification.ipynb)" in Jupyter Notebook and execute from top to bottom.<br>
-To change the number of training data classes, change the value of "NUM_CLASSES = 3" <br>and modify the label of "model/keypoint_classifier/keypoint_classifier_label.csv" as appropriate.<br><br>
+point_history_classification.ipynb
+
+Another Jupyter notebook, but this one focuses on gesture recognition—like tracking finger movement history for extra precision.
+
+Model Directories
+
+model/keypoint_classifier/
+
+Stores hand sign recognition goodies: training data, models, labels, and inference modules.
 
 
-### Finger gesture recognition training
-#### 1.Learning data collection
-Press "h" to enter the mode to save the history of fingertip coordinates (displayed as "MODE:Logging Point History").<br>
-<img src="https://user-images.githubusercontent.com/37477845/102249074-4d78fc80-3f45-11eb-9c1b-3eb975798871.jpg" width="60%"><br><br>
-If you press "0" to "9", the key points will be added to "model/point_history_classifier/point_history.csv" as shown below.<br>
+model/point_history_classifier/
 
-In the initial state, 4 types of learning data are included: stationary (class ID: 0), clockwise (class ID: 1), counterclockwise (class ID: 2), and moving (class ID: 4). <br>
-If necessary, add 5 or later, or delete the existing data of csv to prepare the training data.<br>
-<img src="https://user-images.githubusercontent.com/37477845/102350939-02b0c080-3fe9-11eb-94d8-54a3decdeebc.jpg" width="20%">　<img src="https://user-images.githubusercontent.com/37477845/102350945-05131a80-3fe9-11eb-904c-a1ec573a5c7d.jpg" width="20%">　<img src="https://user-images.githubusercontent.com/37477845/102350951-06444780-3fe9-11eb-98cc-91e352edc23c.jpg" width="20%">　<img src="https://user-images.githubusercontent.com/37477845/102350942-047a8400-3fe9-11eb-9103-dbf383e67bf5.jpg" width="20%">
-
-#### 2.Model training
-Open "[point_history_classification.ipynb](point_history_classification.ipynb)" in Jupyter Notebook and execute from top to bottom.<br>
-To change the number of training data classes, change the value of "NUM_CLASSES = 4" and <br>modify the label of "model/point_history_classifier/point_history_classifier_label.csv" as appropriate. <br><br>
+Houses finger gesture recognition treasures, including trained models and datasets.
 
 
-# Reference
-* [MediaPipe](https://mediapipe.dev/)
+utils/cvfpscalc.py
+
+A speedometer for your frames-per-second. Because smooth gestures matter.
+
+
+
+---
+
+🎭 Training: Make Triksha Smarter!
+
+Want to teach Triksha your own secret hand gestures? Here’s how:
+
+👋 Hand Sign Recognition Training
+
+Step 1: Collecting Data
+
+Press 'k' to enter keypoint logging mode.
+
+Press 0-9 to save different hand poses to keypoint.csv.
+
+By default, it knows "open hand," "closed hand," and "pointing"—but you can teach it more!
+
+
+Step 2: Model Training
+
+Open keypoint_classification.ipynb in Jupyter.
+
+Change NUM_CLASSES if you're adding more signs.
+
+Update keypoint_classifier_label.csv with your new labels.
+
+Run all the cells and watch Triksha level up!
+
+
+🔄 Finger Gesture Recognition Training
+
+Step 1: Data Collection
+
+Press 'h' to start logging finger movement history.
+
+Press 0-9 to save different motion patterns to point_history.csv.
+
+Default motions include "stationary," "clockwise," "counterclockwise," and "moving."
+
+
+Step 2: Training the Model
+
+Open point_history_classification.ipynb in Jupyter.
+
+Adjust NUM_CLASSES for additional movements.
+
+Modify point_history_classifier_label.csv to reflect new gestures.
+
+Run all the cells, and voila!
+
+
+
+---
+
+📓 Reference
+
+MediaPipe (where the real magic happens)
+
+
+Now go forth and wield the power of gestures like the tech wizard you are! 🖐️
+
