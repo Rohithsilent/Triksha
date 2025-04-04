@@ -115,6 +115,7 @@ Update keypoint_classifier_label.csv with your new labels.
 Run all the cells and watch Triksha level up!
 
 
+
 🔄 Finger Gesture Recognition Training
 
 Step 1: Data Collection
