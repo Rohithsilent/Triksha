@@ -147,5 +147,3 @@ Run all the cells, and voila!
 MediaPipe (where the real magic happens)
 
 
-Now go forth and wield the power of gestures like the tech wizard you are! 🖐️
-
